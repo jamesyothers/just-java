@@ -41,14 +41,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + 3);
+       int quantity = 3;
+       display(quantity);
 
     }
 
     public void decrement(View view) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + 1);
+        int quantity = 1;
+        display(quantity);
 
     }
 
