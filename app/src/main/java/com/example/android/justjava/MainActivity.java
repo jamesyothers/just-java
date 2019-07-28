@@ -7,9 +7,6 @@
  **/
 
 package com.example.android.justjava;
-
-
-
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
@@ -30,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        display(1);
+        int quantity = 4;
+        display (quantity);
+        displayPrice (quantity * 5);
     }
 
     /**
@@ -40,4 +39,22 @@ public class MainActivity extends AppCompatActivity {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
+
+    public void increment(View view) {
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        quantityTextView.setText("" + 3);
+
+    }
+
+    public void decrement(View view) {
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        quantityTextView.setText("" + 1);
+
+    }
+
+    private void displayPrice(int number) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText("$" + number);
+    }
+
 }
