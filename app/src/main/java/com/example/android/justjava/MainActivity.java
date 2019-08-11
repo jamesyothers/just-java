@@ -32,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         int price = calculatePrice();
-        String priceMessage = "Total: $" + price + "\nThank you!";
+        createOrderSummary(price);
+    }
+
+    public void createOrderSummary (int price) {
+        String priceMessage = "Name: James\nQauantity: " + quantity + "\nTotal: $" + price + "\nThank you!";
         displayMessage(priceMessage);
     }
 
