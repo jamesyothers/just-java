@@ -1,4 +1,5 @@
 <resources>
+    <string name="enter_name">Enter Name</string>
     <string name="app_name">Just Java</string>
     <string name="toppings">toppings</string>
     <string name="whipped_cream">Whipped cream</string>

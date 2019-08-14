@@ -11,6 +11,7 @@ package com.example.android.justjava;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = calculatePrice();
+
+        EditText nameForOrder = (EditText) findViewById(R.id.name_for_order);
+        String nameForOrderString = nameForOrder.getText().toString();
 
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         Boolean whippedCreamChecked = whippedCreamCheckBox.isChecked();
@@ -40,20 +43,35 @@ public class MainActivity extends AppCompatActivity {
         CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         Boolean chocolateChecked = chocolateCheckBox.isChecked();
 
-        createOrderSummary(price, whippedCreamChecked, chocolateChecked);
+        int price = calculatePrice(whippedCreamChecked, chocolateChecked);
+
+        createOrderSummary(price, whippedCreamChecked, chocolateChecked, nameForOrderString);
     }
 
-    public void createOrderSummary(int price, boolean whippedCreamChecked, boolean chocolateChecked) {
-        String priceMessage = "Name: James\nQauantity: " + quantity +
-                "\nAdd whipped cream? " + whippedCreamChecked +
-                "\nAdd chocolate? " + chocolateChecked +
-                "\nTotal: $" + price + "\nThank you!";
+    public void createOrderSummary(int price, boolean whippedCreamChecked, boolean chocolateChecked, String nameForOrderString) {
+        String priceMessage =
+                "Name: " + nameForOrderString +
+                        "\nQauantity: " + quantity +
+                        "\nAdd whipped cream? " + whippedCreamChecked +
+                        "\nAdd chocolate? " + chocolateChecked +
+                        "\nTotal: $" + price + "\nThank you!";
         displayMessage(priceMessage);
     }
 
-    public int calculatePrice() {
-        int price = quantity * 5;
-        return price;
+    public int calculatePrice(Boolean whippedCreamChecked, Boolean chocolateChecked) {
+        int itemPrice = 5;
+
+        if (whippedCreamChecked) {
+            itemPrice = itemPrice + 1;
+        }
+
+        if (chocolateChecked) {
+            itemPrice = itemPrice + 2;
+        }
+
+        int totalPrice = quantity * itemPrice;
+
+        return totalPrice;
     }
 
     public void increment(View view) {
