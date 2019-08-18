@@ -8,6 +8,8 @@
 
 package com.example.android.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -55,7 +57,12 @@ public class MainActivity extends AppCompatActivity {
                         "\nAdd whipped cream? " + whippedCreamChecked +
                         "\nAdd chocolate? " + chocolateChecked +
                         "\nTotal: $" + price + "\nThank you!";
-        displayMessage(priceMessage);
+
+        String subject = "JustJava order for " + nameForOrderString;
+
+        composeEmail(subject, priceMessage);
+
+//      displayMessage(priceMessage);
     }
 
     public int calculatePrice(Boolean whippedCreamChecked, Boolean chocolateChecked) {
@@ -101,6 +108,17 @@ public class MainActivity extends AppCompatActivity {
     private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
+    }
+
+    private void composeEmail(String subject, String message) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setType("*/*");
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     /**
