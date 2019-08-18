@@ -24,12 +24,10 @@
             android:inputType="text" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:paddingBottom="16sp"
             android:text="@string/toppings"
-            android:textAllCaps="true"
-            android:textSize="16sp" />
+            style="@style/HeaderTextStyle"
+            />
 
         <CheckBox
             android:id="@+id/whipped_cream_checkbox"
@@ -52,13 +50,10 @@
             android:textSize="16sp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="16sp"
             android:paddingBottom="16sp"
             android:text="@string/quantity"
-            android:textAllCaps="true"
-            android:textSize="16sp" />
+            style="@style/HeaderTextStyle"
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -93,12 +88,10 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:paddingBottom="16sp"
             android:text="@string/order_summary"
-            android:textAllCaps="true"
-            android:textSize="16sp" />
+            style="@style/HeaderTextStyle"
+            />
 
         <TextView
             android:id="@+id/order_summary_text_view"
@@ -116,7 +109,6 @@
             android:text="@string/order"
             android:textAllCaps="true"
             android:textSize="16sp" />
-
 
     </LinearLayout>
 </ScrollView>
